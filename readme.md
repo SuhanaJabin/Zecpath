@@ -185,12 +185,18 @@ API documentation available at:
 3. Update documentation
 4. Submit PR for review
 
-## License
+## Code Standards
 
-MIT License
+This project follows strict code quality standards. Please read [CODE_STANDARDS.md](CODE_STANDARDS.md) before contributing.
 
-## Support
+### Quick Commands
+```bash
+# Format code
+black backend/
 
-For issues and questions:
-- Email: support@zecpath.com
-- Slack: #zecpath-dev
+# Check linting
+flake8 backend/
+
+# Run all checks
+pre-commit run --all-files
+```
