@@ -2,80 +2,195 @@
 
 An autonomous hiring platform that automates the entire recruitment process from resume screening to offer generation using AI.
 
-## Overview
+## Project Structure
 
-Zecpath eliminates manual hiring tasks by using AI-powered interviews, automated screening calls, and intelligent candidate evaluation across multiple rounds.
+```
+zecpath/
+├── backend/
+│   ├── data/                    # Resume files and datasets
+│   ├── parsers/                 # Resume parsing utilities
+│   ├── ats_engine/             # AI-powered ATS system
+│   ├── screening_ai/           # AI voice screening service
+│   ├── interview_ai/           # AI video interview service
+│   ├── scoring/                # Candidate scoring algorithms
+│   ├── utils/                  # Utility functions and helpers
+│   │   ├── logger.py          # Logging configuration
+│   │   └── config.py          # Application configuration
+│   ├── tests/                  # Test scripts
+│   │   ├── test_ats_engine.py
+│   │   ├── test_screening_ai.py
+│   │   └── test_interview_ai.py
+│   ├── logs/                   # Application logs
+│   ├── requirements.txt        # Python dependencies
+│   ├── .env.example           # Environment variables template
+│   └── venv/                  # Virtual environment
+├── frontend/                   # React frontend application
+├── ai-modules/                # Additional AI modules
+└── README.md
 
-## Key Features
+```
 
-- **AI-Powered ATS**: Automatic resume parsing, scoring, and candidate ranking
-- **Automated Voice Calls**: Multilingual AI calls for screening and scheduling
-- **AI Video Interviews**: Autonomous HR and technical interviews with real-time monitoring
-- **Machine Tests**: Live coding and task evaluation with malpractice detection
-- **Salary Negotiation**: AI-driven offer discussions based on market data
-- **Auto Offer Generation**: Branded offer letters with acceptance tracking
+## Setup Instructions
 
-## How It Works
+### 1. Clone the Repository
 
-### For Candidates
-1. Register and upload resume
-2. AI screens your profile automatically
-3. Get AI voice calls for shortlisting
-4. Attend AI-conducted video interviews
-5. Complete technical assessments
-6. Negotiate salary with AI
-7. Receive automated offer letter
+```bash
+git clone <repository-url>
+cd zecpath
+```
 
-### For Employers
-1. Post job requirements
-2. AI shortlists top candidates
-3. Review AI-generated scores and reports
-4. Pay to access full interview recordings
-5. Send offers to selected candidates
+### 2. Backend Setup
 
-## Interview Rounds
+```bash
+# Navigate to backend
+cd backend
 
-1. **Round 1**: AI Voice Screening (basic qualification check)
-2. **Round 2**: HR Video Interview (communication & behavior)
-3. **Round 3**: Technical Interview (role-specific assessment)
-4. **Round 4**: Machine Test (live coding/tasks)
-5. **Round 5**: Salary Negotiation (final discussion)
+# Create virtual environment
+python3 -m venv venv
 
-## Tech Stack
+# Activate virtual environment
+# On Linux/Mac:
+source venv/bin/activate
+# On Windows:
+# venv\Scripts\activate
 
-- **Frontend**: React.js, Next.js, Tailwind CSS
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB / PostgreSQL
-- **AI/Voice**: OpenAI, Twilio / AWS Connect
+# Install dependencies
+pip install -r requirements.txt
+
+# Create .env file
+cp .env.example .env
+# Edit .env with your actual credentials
+```
+
+### 3. Configure Environment Variables
+
+Edit `backend/.env` and add your API keys:
+
+```env
+OPENAI_API_KEY=your_actual_key
+TWILIO_ACCOUNT_SID=your_sid
+TWILIO_AUTH_TOKEN=your_token
+DATABASE_URL=your_database_url
+```
+
+### 4. Run Tests
+
+```bash
+# Run all tests
+pytest backend/tests/ -v
+
+# Run specific test file
+pytest backend/tests/test_ats_engine.py -v
+
+# Run with coverage
+pytest backend/tests/ --cov=backend --cov-report=html
+```
+
+### 5. Start Development Server
+
+```bash
+cd backend
+python app.py
+```
+
+## Module Descriptions
+
+### ATS Engine (`ats_engine/`)
+- Resume parsing and text extraction
+- Skill identification and matching
+- Candidate scoring and ranking
+- Automated shortlisting
+
+### Screening AI (`screening_ai/`)
+- AI voice call automation
+- Multilingual support
+- Screening question generation
+- Response analysis
+
+### Interview AI (`interview_ai/`)
+- Video interview management
+- HR and technical interviews
+- Behavioral monitoring
+- Real-time scoring
+
+### Scoring Module (`scoring/`)
+- Multi-criteria evaluation
+- Weighted scoring algorithms
+- Decision automation
+- Cross-round aggregation
+
+## Testing
+
+The project includes comprehensive test coverage:
+
+- **Unit Tests**: Test individual components
+- **Integration Tests**: Test module interactions
+- **AI Tests**: Validate AI response quality
+
+## Logging
+
+All AI activities are logged in the `backend/logs/` directory:
+
+- `ats_engine.log` - ATS operations
+- `screening_ai.log` - Voice call activities
+- `interview_ai.log` - Interview sessions
+- `scoring.log` - Scoring calculations
+- `api.log` - API requests
+
+## Code Standards
+
+- **Style Guide**: PEP 8
+- **Formatter**: Black
+- **Linter**: Flake8, Pylint
+- **Documentation**: Google-style docstrings
+
+```bash
+# Format code
+black backend/
+
+# Lint code
+flake8 backend/
+pylint backend/
+```
+
+## Development Workflow
+
+1. Create feature branch
+2. Write code with tests
+3. Run tests locally
+4. Format and lint code
+5. Commit with descriptive message
+6. Push and create PR
+
+## Technologies Used
+
+- **Backend**: Python, FastAPI/Flask
+- **AI**: OpenAI GPT-4, spaCy, Transformers
+- **Voice**: Twilio, AWS Polly
+- **Database**: PostgreSQL, MongoDB
+- **Cache**: Redis
 - **Storage**: AWS S3
-- **Payments**: Razorpay / Stripe
+- **Testing**: pytest
 
-## User Roles
+## API Documentation
 
-- **Super Admin**: Full platform control
-- **Admin**: Manage employers and jobs
-- **Employer**: Post jobs, access candidate data (paid)
-- **Candidate**: Apply for jobs, attend AI interviews
+API documentation available at:
+- Development: `http://localhost:8000/docs`
+- Production: `https://api.zecpath.com/docs`
 
-## Monetization
+## Contributing
 
-- Employers pay to access full candidate interview data
-- Premium job postings
-- Candidate profile highlighting (subscription)
-
-## Security & Compliance
-
-- End-to-end encryption
-- GDPR-compliant consent management
-- Secure video/audio recording
-- Interview malpractice detection
-
-
+1. Follow the code standards
+2. Write tests for new features
+3. Update documentation
+4. Submit PR for review
 
 ## License
 
 MIT License
 
-## Contact
+## Support
 
-For questions or support, contact: support@zecpath.com
+For issues and questions:
+- Email: support@zecpath.com
+- Slack: #zecpath-dev

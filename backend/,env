@@ -1,0 +1,39 @@
+# Application Settings
+DEBUG=True
+APP_ENV=development
+
+# API Keys
+OPENAI_API_KEY=your_openai_api_key_here
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_PHONE_NUMBER=your_twilio_phone_number
+
+# Database
+DATABASE_URL=postgresql://username:password@localhost:5432/zecpath
+
+# Redis
+REDIS_URL=redis://localhost:6379/0
+
+# AWS S3
+AWS_ACCESS_KEY=your_aws_access_key
+AWS_SECRET_KEY=your_aws_secret_key
+S3_BUCKET_NAME=zecpath-storage
+
+# AI Settings
+AI_MODEL=gpt-4
+MAX_TOKENS=1000
+TEMPERATURE=0.7
+
+# Interview Configuration
+MAX_RETRY_ATTEMPTS=3
+RETRY_DELAY_MINUTES=60
+OFFICE_HOURS_START=10
+OFFICE_HOURS_END=18
+
+# Scoring Thresholds
+ATS_PASS_THRESHOLD=70
+HR_PASS_THRESHOLD=65
+TECH_PASS_THRESHOLD=70
+
+# File Upload
+MAX_FILE_SIZE_MB=10
